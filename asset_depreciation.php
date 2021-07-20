@@ -29,8 +29,6 @@ if (isset($_POST['life']))
 
 
 
-
-
 <!DOCTYPE html>
 <php lang="en">
 
