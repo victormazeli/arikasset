@@ -3,11 +3,12 @@
 
  include ('includes/db_config.php');
 
- if(!isset($_SESSION["username"])){
+/* if(!isset($_SESSION["username"])){
 
   header("Location: login.php");
 
-}if (isset($_GET['logout'])=='yes') {
+}*/
+ if (isset($_GET['logout'])=='yes') {
   # code...
   session_destroy();
   header("Location: login.php");
@@ -81,6 +82,8 @@ if (isset($_GET['disable'])) {
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+    <?php if (!isset($_SESSION['username'])):
+    ?>
     <div class="collapse navbar-collapse" id="collapsibleNavId">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item dropdown no-arrow">
@@ -125,6 +128,9 @@ if (isset($_GET['disable'])) {
    </ul>
       
     </div>
+    <?php
+    endif;
+    ?>
 </nav>
 
 
@@ -348,7 +354,13 @@ if (isset($_GET['disable'])) {
             </div>
           </div>
         </div>
-
+          <div class="row">
+              <div class="col-12">
+                  <div class="text-center text-150">
+                      <img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=http%3A%2F%2Flocalhost/asset_inventory.php?location=<?=$_GET['location']?>%2F&choe=UTF-8" title="<?=$_GET['location']?>" />
+                  </div>
+              </div>
+          </div>
       </div>
       <!-- /.container-fluid -->
 

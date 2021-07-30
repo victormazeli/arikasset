@@ -21,7 +21,7 @@ $message=array();
 
 if (isset($_GET['employee_id'])) {
 
-  $location=$_SESSION["location"];
+  $location=$_SESSION["location"]??null;
   $asset_detail=$_GET['employee_id'];
 
   $details = $conn->query(" SELECT * FROM it_asset INNER JOIN employee_asset ON it_asset.asset_id=employee_asset.asset_id 
