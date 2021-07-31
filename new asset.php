@@ -31,8 +31,8 @@ $ram=trim($_POST['ram']);
 $os=trim($_POST['os']);
 $has_edit=$_POST['has_edit'];
 $condition=trim($_POST['cond']);
-$location=trim($_POST['location']);
-$salvage=trim($_POST['salvage']);
+$location=trim($_POST['location'])??'';
+$salvage=trim($_POST['salvage'])??'';
 // $verified=trim($_POST['verify']);
 
 //inputs validation check for empty values
