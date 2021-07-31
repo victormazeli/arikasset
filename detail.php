@@ -164,6 +164,7 @@ if (isset($_GET['employee_id'])) {
                     <th>Serial No</th>
                     <th>Specification</th>
                     <th>Condition</th>
+                    <th>Salvation value</th>
                     <th>Date Assigned</th>
                     <th>Transfer Status</th>
                     <th>Transfer Date</th>
@@ -200,6 +201,7 @@ if (isset($_GET['employee_id'])) {
                 }
                  ?>
                  </td>
+                    <td><?=$asset['salvage_value']?></td>
                 <td><?php echo $asset['date_assigned'] ?></td>
                 <td><?php 
                 

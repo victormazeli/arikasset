@@ -295,6 +295,7 @@ if (isset($_GET['disable'])) {
                    <th>Specification</th>
                    <th>Entry Date</th>
                     <th>Condition</th>
+                    <th>Salvage value</th>
                     <th>Options</th>
                   </tr>
                 </thead>
@@ -329,7 +330,8 @@ if (isset($_GET['disable'])) {
                 
                 
                 ?>
-                  </td> 
+                  </td>
+                    <td><?=$asset['salvage_value']?></td>
 
                   <td>
                   <div class="dropdown open">
