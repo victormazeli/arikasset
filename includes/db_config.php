@@ -11,7 +11,7 @@ $options=[
 ];
 
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=arik", $username, $password, $options);
+    $conn = new PDO("mysql:host=$servername;dbname=itasset", $username, $password, $options);
   
     }
 catch(PDOException $e)

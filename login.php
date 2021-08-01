@@ -65,7 +65,7 @@ if ($row==false){
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Arikasset::Login</title>
+  <title>::Login</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -83,8 +83,9 @@ if ($row==false){
   <div class="container">
  
     <div class="card card-login mx-auto mt-5 mb-3">
-   <div style="text-align: center;"  class=" mb-2 mt-3">
- <img  src="icon/ARIK.png" alt="logo" width="150" height="45"/>
+   <div style="text-align: center;"  class=" mb-2 mt-3 text-lg-center">
+ <!-- <img  src="icon/ARIK.png" alt="logo" width="150" height="45"/> -->
+
 
  </div>
 <?php foreach ($error as $er ) : ?>
@@ -116,7 +117,7 @@ if ($row==false){
 <footer class="">
         <div class="container-fluid my-auto">
           <div class="copyright text-center my-auto" style=" color: #fff">
-            <span>Copyright © Arik Air IT Asset Portal</span>
+            <span>Copyright ©  IT Asset Portal</span>
           </div>
         </div>
       </footer>
