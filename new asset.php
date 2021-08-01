@@ -1,5 +1,5 @@
 <?php
- session_start(); 
+ session_start();
 
  include ('includes/db_config.php');
 
@@ -13,7 +13,7 @@
   header("Location: login.php");
 }
   
-   
+   $post = false;
 //PHP script for inserting data into database
 
 $success=array();
@@ -21,7 +21,6 @@ $error=array();
 $message="";
 
 if (isset($_POST['insert'])) {
-# code...
 $device_name=trim($_POST['Description']);
 $category=trim($_POST['category']);
 $serial_no=trim($_POST['serialno']);
@@ -31,7 +30,7 @@ $ram=trim($_POST['ram']);
 $os=trim($_POST['os']);
 $has_edit=$_POST['has_edit'];
 $condition=trim($_POST['cond']);
-$location=trim($_POST['location'])??'';
+$location=trim($_POST['location'])??0;
 $salvage=trim($_POST['salvage'])??'';
 // $verified=trim($_POST['verify']);
 
@@ -40,7 +39,7 @@ if (empty($device_name)) {array_push($error, "please insert asset name");}
 if (empty($serial_no)) {array_push($error, "Please insert serial no");}
 if (empty($category)) {array_push($error, "please insert category");}
 if (empty($ram)) {array_push($error, "Please insert Ram");}
-if (empty($processor)) {array_push($error, "please inser processor type");}
+if (empty($processor)) {array_push($error, "please insert processor type");}
 if (empty($hdd)) {array_push($error, "please insert hard disk size");}
 if (empty($os)) {array_push($error, "please insert os type");}
 
@@ -48,11 +47,17 @@ if (empty($os)) {array_push($error, "please insert os type");}
 
 if (count($error) == 0 ) {
   $sql ="INSERT INTO it_asset(asset_category_id, description, serialno, ram, hdd, os, processor, con, has_edit, location_id, salvage_value)
-  VALUES ('".$category."','".$device_name."','".$serial_no."','".$ram."','".$hdd."','".$os."','".$processor."','".$condition."','".$has_edit."','".$location.", '".$salvage."'')";
+  VALUES ('".$category."','".$device_name."','".$serial_no."','".$ram."','".$hdd."','".$os."','".$processor."','".$condition."','".$has_edit."','".$location."', '".$salvage."')";
   // use exec() because no results are returned
     $ap=$conn->exec($sql);
-
-if ($ap) {array_push($success, "Data Submitted successfully");}
+    $last_id = $conn->lastInsertId();
+    $url = "$last_id:$device_name:$serial_no";
+if ($ap) {
+    array_push($success, "Data Submitted successfully <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#myCode\">
+  Re-print
+</button>");
+    $post = true;
+}
 
 }else {
     $message="Error inserting data";
@@ -207,7 +212,7 @@ if ($ap) {array_push($success, "Data Submitted successfully");}
                                   
     </div>
          <div class="col">
-             <input type="text" name="salvage" required class="form-control" id="salvage" placeholder="Salvage value">
+             <input type="text" name="salvage" required class="form-control" id="salvage" placeholder="Salvage value" autocomplete="off">
          </div>
 
     <div class="col">
@@ -375,8 +380,43 @@ if ($ap) {array_push($success, "Data Submitted successfully");}
 
                   return false
               })
-          })
+          });
+
+          function PrintElem(elem)
+          {
+              var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+
+              mywindow.document.write('<html><head><title>' + document.title  + '</title>');
+              mywindow.document.write('</head><body >');
+              mywindow.document.write('<h1>' + document.title  + '</h1>');
+              mywindow.document.write(document.getElementById(elem).innerHTML);
+              mywindow.document.write('</body></html>');
+
+              mywindow.document.close(); // necessary for IE >= 10
+              mywindow.focus(); // necessary for IE >= 10*/
+
+              mywindow.print();
+              mywindow.close();
+
+              return true;
+          }
       </script>
+      <?php
+      if ($post):?>
+          <script>
+              $(function () {
+                  $("#salp").on("click", function () {
+                      $("#myCode").modal("show")
+                  })
+              })
+              $(function () {
+                  $(window).on('load', function() {
+                      $('#myCode').modal('show');
+                  });
+              })
+          </script>
+      <?php
+      endif;?>
 
 </body>
 
@@ -431,6 +471,31 @@ if ($ap) {array_push($success, "Data Submitted successfully");}
                 </button>
             </div>
             </form>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myCode">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Make sure to Print this code</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body" id="qrCode">
+                <img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=http%3A%2F%2F/localhost/view_asset.php?q=<?=$url?>%2F&choe=UTF-8" title="<?=$device_name?>" />
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary" style="background-color:#003479; color:#ffff" onclick="PrintElem('qrCode')">
+                    <i class="fas fa-print"></i> Print
+                </button>
+            </div>
 
         </div>
     </div>
