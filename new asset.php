@@ -96,6 +96,7 @@ if ($ap) {
 </head>
 
 <body id="page-top">
+<<<<<<< HEAD
 <nav class="navbar navbar-expand-md static-top " style="background: linear-gradient(252.3deg, #003F75 57.2%, #7f2347 94.08%), #7f2347;">
 <a class="navbar-brand mr-1" href="index.php"> ASM</a>
     <button class="navbar-toggler d-lg-none text-white" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
@@ -147,6 +148,11 @@ if ($ap) {
       
     </div>
 </nav>
+=======
+<?php
+include_once "nav.php";
+?>
+>>>>>>> 92bcf4cdfc4e3fb4b9b0bc6c4c2b180be22712c8
   <div id="wrapper">
 
 
