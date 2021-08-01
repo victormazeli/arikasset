@@ -33,7 +33,8 @@ if ($row==false){
   session_start(); 
   $_SESSION['user_id']= $row['user_id'];
   $_SESSION['username']= $row['username'];
-  header("Location:index.php");                            
+  $_SESSION['location']= $row['location_id'];
+  header("Location:index.php");
 
    }
 

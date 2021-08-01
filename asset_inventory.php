@@ -359,7 +359,6 @@ if (isset($_GET['disable'])) {
           <div class="row">
               <div class="col-12">
                   <div class="text-center text-150">
-                      <img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=http%3A%2F%2Flocalhost/asset_inventory.php?location=<?=$_GET['location']?>%2F&choe=UTF-8" title="<?=$_GET['location']?>" />
                   </div>
               </div>
           </div>
