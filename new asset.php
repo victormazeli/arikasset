@@ -31,8 +31,8 @@ $ram=trim($_POST['ram']);
 $os=trim($_POST['os']);
 $has_edit=$_POST['has_edit'];
 $condition=trim($_POST['cond']);
-$location=trim($_POST['location']);
-$salvage=trim($_POST['salvage']);
+$location=trim($_POST['location'])??'';
+$salvage=trim($_POST['salvage'])??'';
 // $verified=trim($_POST['verify']);
 
 //inputs validation check for empty values
@@ -47,8 +47,8 @@ if (empty($os)) {array_push($error, "please insert os type");}
 
 
 if (count($error) == 0 ) {
-  $sql ="INSERT INTO it_asset(asset_category_id, description, serialno, ram, hdd, os, processor, con, has_edit, location_id)
-  VALUES ('".$category."','".$device_name."','".$serial_no."','".$ram."','".$hdd."','".$os."','".$processor."','".$condition."','".$has_edit."','".$location."')";
+  $sql ="INSERT INTO it_asset(asset_category_id, description, serialno, ram, hdd, os, processor, con, has_edit, location_id, salvage_value)
+  VALUES ('".$category."','".$device_name."','".$serial_no."','".$ram."','".$hdd."','".$os."','".$processor."','".$condition."','".$has_edit."','".$location.", '".$salvage."'')";
   // use exec() because no results are returned
     $ap=$conn->exec($sql);
 
