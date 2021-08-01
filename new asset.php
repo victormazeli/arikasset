@@ -31,7 +31,8 @@ $ram=trim($_POST['ram']);
 $os=trim($_POST['os']);
 $has_edit=$_POST['has_edit'];
 $condition=trim($_POST['cond']);
-$location=trim($_POST['location']);
+$location=trim($_POST['location'])??'';
+$salvage=trim($_POST['salvage'])??'';
 // $verified=trim($_POST['verify']);
 
 //inputs validation check for empty values
@@ -46,8 +47,8 @@ if (empty($os)) {array_push($error, "please insert os type");}
 
 
 if (count($error) == 0 ) {
-  $sql ="INSERT INTO it_asset(asset_category_id, description, serialno, ram, hdd, os, processor, con, has_edit, location_id)
-  VALUES ('".$category."','".$device_name."','".$serial_no."','".$ram."','".$hdd."','".$os."','".$processor."','".$condition."','".$has_edit."','".$location."')";
+  $sql ="INSERT INTO it_asset(asset_category_id, description, serialno, ram, hdd, os, processor, con, has_edit, location_id, salvage_value)
+  VALUES ('".$category."','".$device_name."','".$serial_no."','".$ram."','".$hdd."','".$os."','".$processor."','".$condition."','".$has_edit."','".$location.", '".$salvage."'')";
   // use exec() because no results are returned
     $ap=$conn->exec($sql);
 
@@ -205,6 +206,9 @@ if ($ap) {array_push($success, "Data Submitted successfully");}
     <input type="text"  name="serialno" placeholder="Enter serial no" class="form-control" required>
                                   
     </div>
+         <div class="col">
+             <input type="text" name="salvage" required class="form-control" id="salvage" placeholder="Salvage value">
+         </div>
 
     <div class="col">
     <select name="category" id="select" class="form-control">
@@ -342,9 +346,92 @@ if ($ap) {array_push($success, "Data Submitted successfully");}
 } );    
     
   </script>
+      <script>
+          $(function () {
+              $("#salvage").on("click", function () {
+                  $("#myModal").modal("show")
+              })
+          })
+          $(document).ready(function() {
+              $('form.myForm').on('submit', function () {
+                  let cost = $("#cost").val()
+                  let salvage = $("#sal").val()
+                  let life = $("#life").val()
 
+                  /**
+                   * here we do the calculation
+                   */
+                  let calc = (cost * salvage) / life
 
+                  /**
+                   * populate the input
+                   */
+                  $("#salvage").val(calc)
+
+                  /**
+                   * hide modal
+                   */
+                  $("#myModal").modal("hide")
+
+                  return false
+              })
+          })
+      </script>
 
 </body>
 
 </html>
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Modal Heading</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <form action="" class="form-horizontal myForm">
+            <div class="modal-body">
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="text-input" class=" form-control-label">Cost</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="number"  name="cost" placeholder="Enter asset cost" class="form-control" required id="cost">
+
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="text-input" class=" form-control-label">Salvage</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="number"  name="sal" placeholder="Enter salvage cost" class="form-control" required id="sal">
+
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="text-input" class=" form-control-label">Useful life</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="number"  name="life" placeholder="Enter useful life" class="form-control" required id="life">
+                        </div>
+                    </div>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button name="check" class="btn btn-primary" style="background-color:#003479; color:#ffff">
+                    <i class="fas fa-check    "></i> Check
+                </button>
+            </div>
+            </form>
+
+        </div>
+    </div>
+</div>

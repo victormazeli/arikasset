@@ -21,7 +21,7 @@ $message=array();
 
 if (isset($_GET['employee_id'])) {
 
-  $location=$_SESSION["location"];
+  $location=$_SESSION["location"]??null;
   $asset_detail=$_GET['employee_id'];
 
   $details = $conn->query(" SELECT * FROM it_asset INNER JOIN employee_asset ON it_asset.asset_id=employee_asset.asset_id 
@@ -164,6 +164,7 @@ if (isset($_GET['employee_id'])) {
                     <th>Serial No</th>
                     <th>Specification</th>
                     <th>Condition</th>
+                    <th>Salvation value</th>
                     <th>Date Assigned</th>
                     <th>Transfer Status</th>
                     <th>Transfer Date</th>
@@ -200,6 +201,7 @@ if (isset($_GET['employee_id'])) {
                 }
                  ?>
                  </td>
+                    <td><?=$asset['salvage_value']?></td>
                 <td><?php echo $asset['date_assigned'] ?></td>
                 <td><?php 
                 
