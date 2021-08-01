@@ -1,7 +1,9 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
+$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$servername = $cleardb_url["host"];
+$username = $cleardb_url["user"];
+$password = $cleardb_url["pass"];
+$db = substr($cleardb_url["path"],1);
 
 $options=[
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -11,7 +13,7 @@ $options=[
 ];
 
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=arik", $username, $password, $options);
+    $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password, $options);
   
     }
 catch(PDOException $e)
