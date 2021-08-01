@@ -1,6 +1,4 @@
-
-
-<?php 
+<?php
 include ('includes/db_config.php');
 
 //php script for login in admin
@@ -15,11 +13,19 @@ $error =  array();
 
   $username=trim($_POST['username']);
   $password=trim($_POST['password']);
+  if ($_POST['permission'] == "user")
+  {
+      $type = "user";
+  }else
+  {
+      $type = "admin";
+  }
  
- $sql="SELECT * FROM user_table WHERE username=:username AND password=:password ";
+ $sql="SELECT * FROM user_table WHERE username=:username AND password=:password AND type=:type";
  $stmt= $conn->prepare($sql);
  $stmt->bindValue(':username', $username);
  $stmt->bindValue(':password', $password);
+ $stmt->bindValue(':type', $type);
  $stmt->execute();
  $row= $stmt->fetch();
 
@@ -34,6 +40,7 @@ if ($row==false){
   $_SESSION['user_id']= $row['user_id'];
   $_SESSION['username']= $row['username'];
   $_SESSION['location']= $row['location_id'];
+  $_SESSION['type']= $row['type'];
   header("Location:index.php");
 
    }
@@ -98,6 +105,14 @@ if ($row==false){
 <?php endforeach; ?>
       <div class="card-body mb-2">
       <form method="POST">
+          <div class="form-group">
+              <label for="">Permission</label>
+              <select name="permission" id="" class="form-control">
+                  <option value="">--select permission level--</option>
+                  <option value="admin">Admin</option>
+                  <option value="user">User</option>
+              </select>
+          </div>
   <div class="form-group">
     <label for="username" style="text-align: center; color: #003F75">Username</label>
     <input type="text" class="form-control" name="username"  placeholder="Username">
