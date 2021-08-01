@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 31, 2021 at 07:08 PM
+-- Generation Time: Aug 01, 2021 at 06:48 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.4.9
 
@@ -348,7 +348,7 @@ CREATE TABLE IF NOT EXISTS `it_asset` (
   `location_id` int(20) NOT NULL,
   `salvage_value` int(11) DEFAULT NULL,
   PRIMARY KEY (`asset_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=146 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=156 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `it_asset`
@@ -499,7 +499,17 @@ INSERT INTO `it_asset` (`asset_id`, `asset_category_id`, `description`, `serialn
 (142, 8, 'HP 280 G2 MT', 'CZC7077FW2', '4GB', '500GB', 'WIN 10', 'CORE I3', 'in service', 0, 13, NULL),
 (143, 3, 'HP 250 G5 NOTEBOin service PC', 'CND628IYG9', '4GB', '500GB', 'WIN 7', 'CORE I3', 'in service', 0, 13, NULL),
 (144, 2, 'HP COLOR LJ PRO MFP M281 FDN', 'VNBNK923BP', 'NA', 'NA', 'NA', 'NA', 'in service', 0, 13, NULL),
-(145, 3, 'HP PROBOin service 450 G4', '5CD7480NF1', '8GB', '1TB', 'WIN 10', 'CORE I7', 'in service', 0, 13, NULL);
+(145, 3, 'HP PROBOin service 450 G4', '5CD7480NF1', '8GB', '1TB', 'WIN 10', 'CORE I7', 'in service', 0, 13, NULL),
+(146, 2, 'My Phone', '4354t4t', '2GB', '160GB', 'Windows 7', 'Core Duo', 'Out of service', 0, 1, 26),
+(147, 2, 'My Phone', '4354t4t', '2GB', '160GB', 'Windows 7', 'Core Duo', 'Out of service', 0, 1, 26),
+(148, 1, 'My Phone', '4354t4t', '2GB', '250GB', 'Windows 8', 'Core Duo', 'In service', 0, 1, 385),
+(149, 1, 'My Phone', '4354t4t', '2GB', '250GB', 'Windows 8', 'Core Duo', 'In service', 0, 1, 385),
+(150, 1, 'My Phone', '4354t4t', '2GB', '250GB', 'Windows 8', 'Core Duo', 'In service', 0, 1, 385),
+(151, 1, 'My Phone', '4354t4t', '2GB', '250GB', 'Windows 8', 'Core Duo', 'In service', 0, 1, 385),
+(152, 1, 'My Phone', '4354t4tew', '3GB', '160GB', 'Windows 7', 'Core Duo', 'In service', 0, 1, 273),
+(153, 1, 'My Phone', '4354t4tew', '2GB', '160GB', 'Windows 7', 'Pentium', 'Out of service', 0, 1, 82),
+(154, 1, 'My Phone', '4354t4t', '3GB', '160GB', 'Windows 7', 'Core Duo', 'In service', 0, 1, 736),
+(155, 3, 'My Phone', '4354t4t', '3GB', '160GB', 'Windows 8', 'Core Duo', 'In service', 0, 1, 37352);
 
 -- --------------------------------------------------------
 
@@ -721,6 +731,7 @@ CREATE TABLE IF NOT EXISTS `user_table` (
   `username` varchar(100) NOT NULL,
   `password` varchar(555) NOT NULL,
   `location_id` int(20) NOT NULL,
+  `type` enum('admin','user') NOT NULL DEFAULT 'user',
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
@@ -728,30 +739,30 @@ CREATE TABLE IF NOT EXISTS `user_table` (
 -- Dumping data for table `user_table`
 --
 
-INSERT INTO `user_table` (`user_id`, `username`, `password`, `location_id`) VALUES
-(1, 'it-abuja', 'it-abuja', 1),
-(2, 'it-asaba', '', 2),
-(3, 'it-benin', '', 3),
-(4, 'it-bauchi', '', 4),
-(5, 'it-calabar', '', 5),
-(6, 'it-enugu', '', 6),
-(7, 'it-gombe', '', 7),
-(8, 'it-illorin', '', 8),
-(9, 'it-ibadan', '', 9),
-(10, 'it-jos', '', 10),
-(11, 'it-kaduna', '', 11),
-(12, 'it-kano', '', 12),
-(13, 'it-lagos', '', 13),
-(15, 'it-owerri', '', 15),
-(16, 'it-portharcourt', '', 16),
-(17, 'it-sokoto', '', 17),
-(18, 'it-uyo', '', 18),
-(19, 'it-warri', '', 19),
-(20, 'it-yola', '', 20),
-(21, 'it-accra', '', 21),
-(22, 'it-dakar', '', 22),
-(23, 'it-luanda', '', 23),
-(24, 'it-monrovia', '', 24);
+INSERT INTO `user_table` (`user_id`, `username`, `password`, `location_id`, `type`) VALUES
+(1, 'it-abuja', 'it-abuja', 1, 'admin'),
+(2, 'it-asaba', 'it-asaba', 2, 'user'),
+(3, 'it-benin', '', 3, 'user'),
+(4, 'it-bauchi', '', 4, 'user'),
+(5, 'it-calabar', '', 5, 'user'),
+(6, 'it-enugu', '', 6, 'user'),
+(7, 'it-gombe', '', 7, 'user'),
+(8, 'it-illorin', '', 8, 'user'),
+(9, 'it-ibadan', '', 9, 'user'),
+(10, 'it-jos', '', 10, 'user'),
+(11, 'it-kaduna', '', 11, 'user'),
+(12, 'it-kano', '', 12, 'user'),
+(13, 'it-lagos', '', 13, 'user'),
+(15, 'it-owerri', '', 15, 'user'),
+(16, 'it-portharcourt', '', 16, 'user'),
+(17, 'it-sokoto', '', 17, 'user'),
+(18, 'it-uyo', '', 18, 'user'),
+(19, 'it-warri', '', 19, 'user'),
+(20, 'it-yola', '', 20, 'user'),
+(21, 'it-accra', '', 21, 'user'),
+(22, 'it-dakar', '', 22, 'user'),
+(23, 'it-luanda', '', 23, 'user'),
+(24, 'it-monrovia', '', 24, 'user');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
