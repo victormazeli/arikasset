@@ -84,7 +84,9 @@ if ($ap) {
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="icon/arik wing.png" rel="short icon" type="img/png">
+  <!-- <link href="icon/arik wing.png" rel="short icon" type="img/png"> -->
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <!-- Page level plugin CSS-->
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
@@ -96,63 +98,9 @@ if ($ap) {
 </head>
 
 <body id="page-top">
-<<<<<<< HEAD
-<nav class="navbar navbar-expand-md static-top " style="background: linear-gradient(252.3deg, #003F75 57.2%, #7f2347 94.08%), #7f2347;">
-<a class="navbar-brand mr-1" href="index.php"> ASM</a>
-    <button class="navbar-toggler d-lg-none text-white" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavId">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item dropdown no-arrow">
-       <a class="nav-link dropdown-toggle text-white" href="#" id="assetDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-       <i class="fas fa-clipboard    "></i> Asset register</a>
-       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="assetDropdown" style="text-color: #003F75;">
-       <a class="nav-link " href="new asset.php" > <i class="fas fa-file    "></i> New asset</a> 
-       <a class="nav-link " href="employee_register.php" > <i class="fas fa-user    "></i> New Employee</a> 
-       <a class="nav-link " href="assign_asset.php" > <i class="fas fa-cog    "></i> Assign asset</a> 
-       </div>
-     </li>
-   
-      <li class="nav-item  dropdown no-arrow">
-      <a class="nav-link dropdown-toggle text-white" href="#" id="empDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <i class=" fas fa-users   "></i> Employee asset</a>
-       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="empDropdown" style="text-color: #003F75;">
-       <a class="nav-link" href="Employee_Asset_list.php"><i class=" fas fa-eye   "></i> View asset</a> 
-       </div>
-      </li>
-     
-      <li class="nav-item">
-          <a class="nav-link text-white" href="location.php"><i class="fas fa-layer-group     "></i> Asset inventory</a>
-      </li>
-      <!-- <li class="nav-item">
-          <a class="nav-link text-white" href="Report.php"><i class="fas fa-clipboard    "></i> Report</a>
-      </li> -->
-      
-            
-        </ul>
-        <ul class="navbar-nav ml-auto mr-0">
-     
-      
-     <li class="nav-item dropdown no-arrow">
-       <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-       <img src="icon/man.png" alt="John Doe" width="45" height="45" />  <?php echo $_SESSION['username']; ?>
-       </a>
-       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-       
-         <a class="dropdown-item" href="?logout=yes">Logout</a>
-       </div>
-     </li>
-   </ul>
-      
-    </div>
-</nav>
-=======
 <?php
 include_once "nav.php";
 ?>
->>>>>>> 92bcf4cdfc4e3fb4b9b0bc6c4c2b180be22712c8
   <div id="wrapper">
 
 

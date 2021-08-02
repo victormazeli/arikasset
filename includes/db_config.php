@@ -5,6 +5,7 @@ $username = $cleardb_url["user"];
 $password = $cleardb_url["pass"];
 $db = substr($cleardb_url["path"],1);
 
+
 $options=[
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,

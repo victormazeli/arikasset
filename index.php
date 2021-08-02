@@ -42,6 +42,8 @@ $assets = $result->fetchAll();
   <link href="icon/arik wing.png" rel="short icon" type="img/png">
   <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
   <!-- Page level plugin CSS-->
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   
