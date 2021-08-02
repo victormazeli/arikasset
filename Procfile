@@ -1,1 +1,1 @@
-web: npm install && npm run start
+web: vendor/bin/heroku-php-apache2
